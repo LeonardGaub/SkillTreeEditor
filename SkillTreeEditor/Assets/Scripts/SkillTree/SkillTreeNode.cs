@@ -6,9 +6,8 @@ using UnityEngine;
 
 public class SkillTreeNode : ScriptableObject
 {
-    [SerializeField] private string skillName;
-    [SerializeField] private List<string> children = new List<string>();
-    [SerializeField] private List<string> parents = new List<string>();
+    private List<string> children = new List<string>();
+    private List<string> parents = new List<string>();
     [SerializeField] private Skill skill;
     [SerializeField] private Rect rect = new Rect(0, 0, 100, 110);
 

@@ -11,7 +11,7 @@ public class SkillTreeEditor : EditorWindow
     [NonSerialized]
     private SkillTreeNode nodeToDrag;
     [NonSerialized]
-    private SkillTreeNode nodeToLink;
+    private SkillTreeNode nodeToConnect;
 
     private bool draggingCanvas;
     private Vector2 draggingOffset;
@@ -74,6 +74,12 @@ public class SkillTreeEditor : EditorWindow
             {
                 DrawNode(node);
             }
+
+            if (nodeToConnect)
+            {
+                DrawConnectionWithMouse(nodeToConnect, Event.current.mousePosition);
+                Repaint();
+            }
             EditorGUILayout.EndScrollView();
         }
     }
@@ -113,7 +119,7 @@ public class SkillTreeEditor : EditorWindow
             nodeToDrag = null;
             draggingCanvas = false;
         }
-        else if (Event.current.type == EventType.MouseUp && Event.current.button == 1)
+        else if (Event.current.type == EventType.MouseUp && Event.current.button == 1 && nodeToConnect == null)
         {
             GenericMenu menu = new GenericMenu();
             Debug.Log(GetNodeAtMousePosition(Event.current.mousePosition + scrollPosition));
@@ -127,6 +133,10 @@ public class SkillTreeEditor : EditorWindow
             }
 
             menu.ShowAsContext();
+        }
+        else if(Event.current.type == EventType.MouseUp && Event.current.button == 1 && nodeToConnect)
+        {
+            nodeToConnect = null;
         }
     }
 
@@ -161,14 +171,16 @@ public class SkillTreeEditor : EditorWindow
     private void DrawNode(SkillTreeNode node)
     {
         GUIStyle style = node.GetNodeStyle();
+        DrawConnectButtons(node);
+
         GUILayout.BeginArea(node.GetRect(), style);
 
         var result = (Skill)EditorGUILayout.ObjectField(node.GetSkill(), typeof(Skill), false);
         node.SetSkill(result);
 
-        EditorGUILayout.LabelField(node.GetSkillName());
+        EditorGUILayout.LabelField(node.GetSkillName(), GetLableStyle());
 
-        GUILayout.BeginHorizontal();
+        GUILayout.BeginHorizontal(GetLableStyle());
 
         if(node.GetSkill() != null)
         {
@@ -179,45 +191,33 @@ public class SkillTreeEditor : EditorWindow
             GUILayout.Box((Texture2D)null, GUILayout.Height(50), GUILayout.Width(50));
         }
 
-        DrawLinkedButtons(node);
-
         GUILayout.EndHorizontal();
 
         GUILayout.EndArea();
     }
 
-    private void DrawLinkedButtons(SkillTreeNode node)
+    private void DrawConnectButtons(SkillTreeNode node)
     {
-        if (nodeToLink == null)
+
+        if (GUI.Button(new Rect(node.GetRect().xMax, node.GetRect().yMin + node.GetRect().height / 2 - 12.5f, 15, 25), ""))
         {
-            if (GUILayout.Button("link"))
+            if (nodeToConnect != null)
             {
-                nodeToLink = node;
+                return;
+            }
+            else
+            {
+                nodeToConnect = node;
             }
         }
-        else if (nodeToLink == node)
+        //if (!nodeToConnect || nodeToConnect == node) { return; }
+
+        if (GUI.Button(new Rect(node.GetRect().xMin - 15, node.GetRect().yMin + node.GetRect().height / 2 - 12.5f, 15, 25), ""))
         {
-            if (GUILayout.Button("cancle"))
+            if (nodeToConnect != null && nodeToConnect != node)
             {
-                nodeToLink = null;
-            }
-        }
-        else if (nodeToLink.GetChildren().Contains(node.name))
-        {
-            if (GUILayout.Button("unlink"))
-            {
-                nodeToLink.RemoveChild(node.name);
-                node.RemoveParent(nodeToLink.name);
-                nodeToLink = null;
-            }
-        }
-        else
-        {
-            if (GUILayout.Button("child"))
-            {
-                nodeToLink.AddChild(node.name);
-                node.AddParent(nodeToLink.name);
-                nodeToLink = null;
+                nodeToConnect.AddChild(node.name);
+                nodeToConnect = null;
             }
         }
     }
@@ -235,5 +235,21 @@ public class SkillTreeEditor : EditorWindow
                 startPosition + controlPointOffset, childPosition - controlPointOffset,
                 Color.blue, null, 5f);
         }
+    }
+
+    private void DrawConnectionWithMouse(SkillTreeNode node, Vector3 mousePosition)
+    {
+        Vector3 startPosition = new Vector3(node.GetRect().xMax, node.GetRect().center.y);
+        Vector3 controlPointOffset = mousePosition - startPosition;
+        controlPointOffset.y = 0;
+        Handles.DrawBezier(startPosition, mousePosition, startPosition + controlPointOffset, mousePosition - controlPointOffset,
+                Color.blue, null, 5f);
+    }
+
+    private GUIStyle GetLableStyle()
+    {
+        GUIStyle style = new GUIStyle(EditorStyles.textField);
+        style.normal.background = Texture2D.redTexture;
+        return style;
     }
 }
