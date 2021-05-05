@@ -9,8 +9,8 @@ public class SkillTreeNode : ScriptableObject
     [SerializeField] private string skillName;
     [SerializeField] private List<string> children = new List<string>();
     [SerializeField] private List<string> parents = new List<string>();
-    [SerializeField] private Sprite icon;
-    [SerializeField] private Rect rect = new Rect(0, 0, 100, 150);
+    [SerializeField] private Skill skill;
+    [SerializeField] private Rect rect = new Rect(0, 0, 100, 110);
 
     public Rect GetRect()
     {
@@ -19,7 +19,7 @@ public class SkillTreeNode : ScriptableObject
 
     public string GetSkillName()
     {
-        return skillName;
+        return skill != null ? skill.name: "";
     }
 
     public List<string> GetChildren()
@@ -33,10 +33,15 @@ public class SkillTreeNode : ScriptableObject
     }
 
 
+    public Skill GetSkill()
+    {
+        return skill;
+    }
+
     public Sprite GetIcon()
     {
-        Debug.Log(icon);
-        return icon;
+        var iconSprite = Sprite.Create(skill.GetIcon(), new Rect(0, 0, skill.GetIcon().width, skill.GetIcon().height), new Vector2(0.5f, 0.5f));
+        return iconSprite;
     }
 
 
@@ -57,22 +62,12 @@ public class SkillTreeNode : ScriptableObject
         EditorUtility.SetDirty(this);
     }
 
-
-    public void SetIcon(Sprite icon)
+    public void SetSkill(Skill skill)
     {
-        if (icon != this.icon)
+        if(skill != this.skill)
         {
-            Undo.RecordObject(this, "Setting new Icon");
-            this.icon = icon;
-            EditorUtility.SetDirty(this);
-        }
-    }
-    public void SetText(string newName)
-    {
-        if (newName != skillName)
-        {
-            Undo.RecordObject(this, "Setting new Text");
-            skillName = newName;
+            Undo.RecordObject(this, "Setting new Skill");
+            this.skill = skill;
             EditorUtility.SetDirty(this);
         }
     }

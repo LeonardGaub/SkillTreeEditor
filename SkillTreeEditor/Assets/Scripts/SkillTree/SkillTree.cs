@@ -51,9 +51,9 @@ public class SkillTree : ScriptableObject, ISerializationCallbackReceiver
         }
     }
 #if UNITY_EDITOR
-    public void CreateNode(SkillTreeNode parentNode)
+    public void CreateNode(Vector2 mousePosition)
     {
-        SkillTreeNode newNode = MakeNode(parentNode);
+        SkillTreeNode newNode = MakeNode(mousePosition);
         Undo.RegisterCreatedObjectUndo(newNode, "Create New Node");
         Undo.RecordObject(this, "Creating Skill Tree Node");
         AddNewNode(newNode);
@@ -68,17 +68,11 @@ public class SkillTree : ScriptableObject, ISerializationCallbackReceiver
         Undo.DestroyObjectImmediate(selectedNode);
     }
 
-    private SkillTreeNode MakeNode(SkillTreeNode parentNode)
+    private SkillTreeNode MakeNode(Vector2 mousePosition)
     {
         SkillTreeNode newNode = CreateInstance<SkillTreeNode>();
         newNode.name = System.Guid.NewGuid().ToString();
-
-        if (parentNode != null)
-        {
-            parentNode.AddChild(newNode.name);
-            newNode.AddParent(parentNode.name);
-            newNode.SetRectPosition(parentNode.GetRect().position + newNodeOffset);
-        }
+        newNode.SetRectPosition(mousePosition);
 
         return newNode;
     }
@@ -107,7 +101,7 @@ public class SkillTree : ScriptableObject, ISerializationCallbackReceiver
 #if UNITY_EDITOR
         if (nodes.Count == 0)
         {
-            SkillTreeNode firstNode = MakeNode(null);
+            SkillTreeNode firstNode = MakeNode(Vector2.zero);
             AddNewNode(firstNode);
         }
         if (AssetDatabase.GetAssetPath(this) != "")
