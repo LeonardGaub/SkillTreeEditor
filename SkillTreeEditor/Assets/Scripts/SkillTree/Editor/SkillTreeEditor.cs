@@ -8,10 +8,9 @@ public class SkillTreeEditor : EditorWindow
     private SkillTree selectedSkillTree;
     private Vector2 scrollPosition;
 
-    [NonSerialized]
     private SkillTreeNode nodeToDrag;
-    [NonSerialized]
     private SkillTreeNode nodeToConnect;
+    private int toolbarInt = -1;
 
     private bool draggingCanvas;
     private Vector2 draggingOffset;
@@ -37,9 +36,20 @@ public class SkillTreeEditor : EditorWindow
         return false;
     }
 
+    public static void CreateNewSkillTree(string name)
+    {
+        var newSkillTree = CreateInstance<SkillTree>();
+        AssetDatabase.CreateAsset(newSkillTree, "Assets/Game/SkillTrees/" + name + ".asset");
+        AssetDatabase.SaveAssets();
+
+        EditorUtility.FocusProjectWindow();
+        Selection.activeObject = newSkillTree;
+    }
+
     private void OnEnable()
     {
         Selection.selectionChanged += OnSelectionChange;
+        toolbarInt = -1;
     }
 
     private void OnSelectionChange()
@@ -57,30 +67,12 @@ public class SkillTreeEditor : EditorWindow
         if (selectedSkillTree)
         {
             ProcessEvents();
-            scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
-
-            Rect rect = GUILayoutUtility.GetRect(CanvasSize, CanvasSize);
-            Texture2D texture2D = Resources.Load("background") as Texture2D;
-            Rect texCoords = new Rect(0, 0, CanvasSize / BackgroundSize, CanvasSize / BackgroundSize);
-
-            GUI.DrawTextureWithTexCoords(rect, texture2D, texCoords);
-
-            foreach (var node in selectedSkillTree.GetNodes())
-            {
-                DrawConnections(node);
-            }
-
-            foreach (var node in selectedSkillTree.GetNodes())
-            {
-                DrawNode(node);
-            }
-
-            if (nodeToConnect)
-            {
-                DrawConnectionWithMouse(nodeToConnect, Event.current.mousePosition);
-                Repaint();
-            }
-            EditorGUILayout.EndScrollView();
+            Draw();
+        }
+        else
+        {
+            toolbarInt = GUILayout.Toolbar(toolbarInt, new string[] { "New SkillTree" }, SkillTreeEditorStyles.GetToolBarStyle()); ;
+            HandleToolbarEvents();
         }
     }
 
@@ -122,7 +114,6 @@ public class SkillTreeEditor : EditorWindow
         else if (Event.current.type == EventType.MouseUp && Event.current.button == 1 && nodeToConnect == null)
         {
             GenericMenu menu = new GenericMenu();
-            Debug.Log(GetNodeAtMousePosition(Event.current.mousePosition + scrollPosition));
             if (GetNodeAtMousePosition(Event.current.mousePosition + scrollPosition) != null)
             {
                 AddMenuItem(menu, "Delete Skill", OnDeleteSkillButtonPress, Event.current.mousePosition);
@@ -138,19 +129,45 @@ public class SkillTreeEditor : EditorWindow
         {
             nodeToConnect = null;
         }
+        HandleToolbarEvents();
     }
 
-    void AddMenuItem(GenericMenu menu, string name, GenericMenu.MenuFunction2 function, object mousePosition)
+    private void HandleToolbarEvents()
+    {
+        switch (toolbarInt)
+        {
+            case 0:
+                SkillTreeCreationWindow.ShowEditorWindow();
+                toolbarInt = -1;
+                break;
+            case 1:
+                ConfirmationPopUp.ShowEditorWindow("Do you want to delete this Skill Tree?", () => 
+                {
+                    DeleteSkillTree(selectedSkillTree.name);
+                });
+                toolbarInt = -1;
+                break;
+        }
+    }
+
+    private void DeleteSkillTree(string name)
+    {
+        if (!selectedSkillTree) { return; }
+        var assetToDelete = AssetDatabase.FindAssets(name);
+        AssetDatabase.DeleteAsset(AssetDatabase.GUIDToAssetPath(assetToDelete[0]));
+    }
+
+    private void AddMenuItem(GenericMenu menu, string name, GenericMenu.MenuFunction2 function, object mousePosition)
     {
         menu.AddItem(new GUIContent(name), false, function, mousePosition);
     }
- 
-    void OnNewSkillButtonPress(object mousePosition)
+
+    private void OnNewSkillButtonPress(object mousePosition)
     {
         selectedSkillTree.CreateNode((Vector2)mousePosition + scrollPosition);
     }
 
-    void OnDeleteSkillButtonPress(object mousePosition)
+    private void OnDeleteSkillButtonPress(object mousePosition)
     {
         selectedSkillTree.DeleteNode(GetNodeAtMousePosition((Vector2)mousePosition + scrollPosition));
     }
@@ -168,6 +185,36 @@ public class SkillTreeEditor : EditorWindow
         return returnNode;
     }
 
+    private void Draw()
+    {
+        toolbarInt = GUILayout.Toolbar(toolbarInt, new string[] { "New SkillTree", "Delete" }, SkillTreeEditorStyles.GetToolBarStyle());
+        
+        scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
+
+        Rect rect = GUILayoutUtility.GetRect(CanvasSize, CanvasSize);
+        Texture2D texture2D = Resources.Load("background") as Texture2D;
+        Rect texCoords = new Rect(0, 0, CanvasSize / BackgroundSize, CanvasSize / BackgroundSize);
+
+        GUI.DrawTextureWithTexCoords(rect, texture2D, texCoords);
+
+        foreach (var node in selectedSkillTree.GetNodes())
+        {
+            DrawConnections(node);
+        }
+
+        foreach (var node in selectedSkillTree.GetNodes())
+        {
+            DrawNode(node);
+        }
+
+        if (nodeToConnect)
+        {
+            DrawConnectionWithMouse(nodeToConnect, Event.current.mousePosition);
+            Repaint();
+        }
+
+        EditorGUILayout.EndScrollView();
+    }
     private void DrawNode(SkillTreeNode node)
     {
         GUIStyle style = node.GetNodeStyle();
@@ -178,9 +225,9 @@ public class SkillTreeEditor : EditorWindow
         var result = (Skill)EditorGUILayout.ObjectField(node.GetSkill(), typeof(Skill), false);
         node.SetSkill(result);
 
-        EditorGUILayout.LabelField(node.GetSkillName(), GetLableStyle());
+        EditorGUILayout.LabelField(node.GetSkillName(), SkillTreeEditorStyles.GetLableStyle());
 
-        GUILayout.BeginHorizontal(GetLableStyle());
+        GUILayout.BeginHorizontal(SkillTreeEditorStyles.GetLableStyle());
 
         if(node.GetSkill() != null)
         {
@@ -198,8 +245,10 @@ public class SkillTreeEditor : EditorWindow
 
     private void DrawConnectButtons(SkillTreeNode node)
     {
-
-        if (GUI.Button(new Rect(node.GetRect().xMax, node.GetRect().yMin + node.GetRect().height / 2 - 12.5f, 15, 25), ""))
+        var buttonHeight = node.GetRect().height / 5;
+        var buttonWidth = node.GetRect().width / 8;
+        
+        if (GUI.Button(new Rect(node.GetRect().xMax, node.GetRect().yMin + node.GetRect().height / 2 - buttonHeight/2, buttonWidth, buttonHeight), ""))
         {
             if (nodeToConnect != null)
             {
@@ -210,15 +259,14 @@ public class SkillTreeEditor : EditorWindow
                 nodeToConnect = node;
             }
         }
-        //if (!nodeToConnect || nodeToConnect == node) { return; }
 
-        if (GUI.Button(new Rect(node.GetRect().xMin - 15, node.GetRect().yMin + node.GetRect().height / 2 - 12.5f, 15, 25), ""))
+        if (GUI.Button(new Rect(node.GetRect().xMin - buttonWidth, node.GetRect().yMin + node.GetRect().height / 2 - buttonHeight/2, buttonWidth, buttonHeight), ""))
         {
             if (nodeToConnect != null && nodeToConnect != node)
             {
                 nodeToConnect.AddChild(node.name);
                 nodeToConnect = null;
-            }
+            }   
         }
     }
 
@@ -244,12 +292,5 @@ public class SkillTreeEditor : EditorWindow
         controlPointOffset.y = 0;
         Handles.DrawBezier(startPosition, mousePosition, startPosition + controlPointOffset, mousePosition - controlPointOffset,
                 Color.blue, null, 5f);
-    }
-
-    private GUIStyle GetLableStyle()
-    {
-        GUIStyle style = new GUIStyle(EditorStyles.textField);
-        style.normal.background = Texture2D.redTexture;
-        return style;
     }
 }

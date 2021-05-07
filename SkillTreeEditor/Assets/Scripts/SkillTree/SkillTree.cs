@@ -7,10 +7,8 @@ using UnityEngine;
 public class SkillTree : ScriptableObject, ISerializationCallbackReceiver
 {
     [SerializeField] List<SkillTreeNode> nodes = new List<SkillTreeNode>();
-    [SerializeField] Vector2 newNodeOffset = new Vector2(300, 0);
 
     Dictionary<string, SkillTreeNode> nodeLookup = new Dictionary<string, SkillTreeNode>();
-
 
     private void OnValidate()
     {
@@ -99,11 +97,6 @@ public class SkillTree : ScriptableObject, ISerializationCallbackReceiver
     public void OnBeforeSerialize()
     {
 #if UNITY_EDITOR
-        if (nodes.Count == 0)
-        {
-            SkillTreeNode firstNode = MakeNode(Vector2.zero);
-            AddNewNode(firstNode);
-        }
         if (AssetDatabase.GetAssetPath(this) != "")
         {
             foreach (SkillTreeNode node in GetNodes())

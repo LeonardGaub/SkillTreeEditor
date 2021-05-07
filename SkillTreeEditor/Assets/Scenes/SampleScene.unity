@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf8cabadb7e0584ba0f485ec351d3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tree: {fileID: 11400000, guid: 4375821cf7266f6439c492b8dc1f33d6, type: 2}
+  tree: {fileID: 0}
   skillUI: {fileID: 5426520087327595647, guid: bf9a3662374c9a44d8789069b52893e5, type: 3}
   treeParent: {fileID: 6347865057616191998, guid: 258a4d8ff20828447bedc334a3c58739, type: 3}
   skillGroup: {fileID: 6347865057616191998, guid: dfe3f2fda51cfaa44a9f2fd252215cc3, type: 3}
