@@ -8,8 +8,10 @@ public class SkillTreeNode : ScriptableObject
 {
     private List<string> children = new List<string>();
     private List<string> parents = new List<string>();
+    [SerializeField] private List<SkillTreeConnection> connections = new List<SkillTreeConnection>();
+    [SerializeField] private bool unlocked = false;
     [SerializeField] private Skill skill;
-    [SerializeField] private Rect rect = new Rect(0, 0, 100, 110);
+    private Rect rect = new Rect(0, 0, 100, 110);
 
     public Rect GetRect()
     {
@@ -31,6 +33,15 @@ public class SkillTreeNode : ScriptableObject
         return parents;
     }
 
+    public bool isUnlocked()
+    {
+        return unlocked;
+    }
+
+    public void SetUnlocked(bool value)
+    {
+        unlocked = value;
+    }
 
     public Skill GetSkill()
     {
@@ -50,6 +61,11 @@ public class SkillTreeNode : ScriptableObject
 
         nodeStyle.normal.background = Texture2D.whiteTexture;
         return nodeStyle;
+    }
+
+    public List<SkillTreeConnection> GetConnections()
+    {
+        return connections;
     }
 
 
@@ -75,6 +91,13 @@ public class SkillTreeNode : ScriptableObject
     {
         Undo.RecordObject(this, "Add Child");
         children.Add(newChild);
+        EditorUtility.SetDirty(this);
+    }
+
+    public void AddConnection(SkillTreeNode parent)
+    {
+        Undo.RecordObject(this, "Add Connection");
+        connections.Add(new SkillTreeConnection(parent, this));
         EditorUtility.SetDirty(this);
     }
 

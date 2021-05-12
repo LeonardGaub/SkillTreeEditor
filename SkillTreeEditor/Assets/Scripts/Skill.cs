@@ -7,6 +7,10 @@ public class Skill : ScriptableObject
 {
     [SerializeField] private Texture2D icon;
 
+    public void onUnlock()
+    {
+
+    }
     public Texture2D GetIcon()
     {
         return icon;

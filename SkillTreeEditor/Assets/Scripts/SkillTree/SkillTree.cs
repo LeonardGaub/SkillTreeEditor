@@ -37,7 +37,6 @@ public class SkillTree : ScriptableObject, ISerializationCallbackReceiver
         }
     }
 
-
     public IEnumerable<SkillTreeNode> GetChildren(SkillTreeNode parentNode)
     {
         foreach (var id in parentNode.GetChildren())
@@ -48,6 +47,35 @@ public class SkillTree : ScriptableObject, ISerializationCallbackReceiver
             }
         }
     }
+
+    public IEnumerable<SkillTreeNode> GetParents(SkillTreeNode childNode)
+    {
+        foreach (var id in childNode.GetParents())
+        {
+            if (nodeLookup.ContainsKey(id))
+            {
+                yield return nodeLookup[id];
+            }
+        }
+    }
+
+    public bool isUnlockable(SkillTreeNode node)
+    {
+        foreach(var connection in node.GetConnections())
+        {
+            if (!connection.isFullfilled())
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void UnlockSkill(SkillTreeNode node)
+    {
+        node.SetUnlocked(true);
+    }
+
 #if UNITY_EDITOR
     public void CreateNode(Vector2 mousePosition)
     {

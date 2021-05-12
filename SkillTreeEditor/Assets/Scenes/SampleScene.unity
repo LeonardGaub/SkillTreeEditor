@@ -392,7 +392,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: -1169}
+  m_AnchoredPosition: {x: 48, y: -1147}
   m_SizeDelta: {x: 1998.9849, y: 1168.5281}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1219941361
@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf8cabadb7e0584ba0f485ec351d3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tree: {fileID: 0}
+  tree: {fileID: 11400000, guid: b7aae178ac8b7a049bef69dbe16cfcc6, type: 2}
   skillUI: {fileID: 5426520087327595647, guid: bf9a3662374c9a44d8789069b52893e5, type: 3}
   treeParent: {fileID: 6347865057616191998, guid: 258a4d8ff20828447bedc334a3c58739, type: 3}
   skillGroup: {fileID: 6347865057616191998, guid: dfe3f2fda51cfaa44a9f2fd252215cc3, type: 3}

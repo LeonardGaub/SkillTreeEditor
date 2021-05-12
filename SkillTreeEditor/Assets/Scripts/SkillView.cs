@@ -9,10 +9,13 @@ public class SkillView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI skillNameText;
     [SerializeField] private Image skillIcon;
 
-    public void SetUp(string name, Sprite icon)
+    public void SetUp(string name, Sprite icon, Vector3 position, bool unlockable)
     {
+        GetComponent<RectTransform>().position = position;
         skillNameText.text = name;
-        Debug.Log(icon);
         skillIcon.sprite = icon;
+
+        //Testing
+        GetComponent<Button>().enabled = unlockable;
     }
 }

@@ -24,6 +24,8 @@ public class SkillTreeEditor : EditorWindow
         GetWindow(typeof(SkillTreeEditor), false, "SkillTreeEditor");
     }
 
+    private void Test() { }
+
     [OnOpenAsset(1)]
     public static bool OnOpenAsset(int instanceId, int line)
     {
@@ -36,7 +38,7 @@ public class SkillTreeEditor : EditorWindow
         return false;
     }
 
-    public static void CreateNewSkillTree(string name)
+    private void CreateNewSkillTree(string name)
     {
         var newSkillTree = CreateInstance<SkillTree>();
         AssetDatabase.CreateAsset(newSkillTree, "Assets/Game/SkillTrees/" + name + ".asset");
@@ -137,7 +139,7 @@ public class SkillTreeEditor : EditorWindow
         switch (toolbarInt)
         {
             case 0:
-                SkillTreeCreationWindow.ShowEditorWindow();
+                SkillTreeCreationWindow.ShowEditorWindow((string name) => { CreateNewSkillTree(name); });
                 toolbarInt = -1;
                 break;
             case 1:
@@ -153,8 +155,8 @@ public class SkillTreeEditor : EditorWindow
     private void DeleteSkillTree(string name)
     {
         if (!selectedSkillTree) { return; }
-        var assetToDelete = AssetDatabase.FindAssets(name);
-        AssetDatabase.DeleteAsset(AssetDatabase.GUIDToAssetPath(assetToDelete[0]));
+
+        AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(selectedSkillTree.GetInstanceID()));
     }
 
     private void AddMenuItem(GenericMenu menu, string name, GenericMenu.MenuFunction2 function, object mousePosition)
@@ -265,6 +267,7 @@ public class SkillTreeEditor : EditorWindow
             if (nodeToConnect != null && nodeToConnect != node)
             {
                 nodeToConnect.AddChild(node.name);
+                node.AddConnection(nodeToConnect);
                 nodeToConnect = null;
             }   
         }
@@ -284,6 +287,8 @@ public class SkillTreeEditor : EditorWindow
                 Color.blue, null, 5f);
         }
     }
+
+    
 
     private void DrawConnectionWithMouse(SkillTreeNode node, Vector3 mousePosition)
     {
