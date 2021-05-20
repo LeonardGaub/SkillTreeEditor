@@ -76,6 +76,20 @@ public class SkillTreeEditor : EditorWindow
             toolbarInt = GUILayout.Toolbar(toolbarInt, new string[] { "New SkillTree" }, SkillTreeEditorStyles.GetToolBarStyle()); ;
             HandleToolbarEvents();
         }
+
+        //Testing
+        string tempString = GUI.GetNameOfFocusedControl();
+        if ((tempString == "xAxis" || tempString == "yAxis" || tempString == "zAxis") && GUIUtility.hotControl != 0)
+        {
+            
+            Debug.Log("dragging");
+        }
+
+        if ((tempString == "xAxis" || tempString == "yAxis" || tempString == "zAxis") && GUIUtility.hotControl == 0)
+        {
+            
+            Debug.Log("released");
+        }
     }
 
     private void ProcessEvents()
@@ -233,11 +247,11 @@ public class SkillTreeEditor : EditorWindow
 
         if(node.GetSkill() != null)
         {
-            GUILayout.Box(node.GetSkill().GetIcon(), GUILayout.Height(50), GUILayout.Width(50));
+            GUILayout.Box(node.GetSkill().GetIcon(), GUILayout.Height(40), GUILayout.Width(40));
         }
         else
         {
-            GUILayout.Box((Texture2D)null, GUILayout.Height(50), GUILayout.Width(50));
+            GUILayout.Box((Texture2D)null, GUILayout.Height(40), GUILayout.Width(40));
         }
 
         GUILayout.EndHorizontal();
@@ -248,7 +262,7 @@ public class SkillTreeEditor : EditorWindow
     private void DrawConnectButtons(SkillTreeNode node)
     {
         var buttonHeight = node.GetRect().height / 5;
-        var buttonWidth = node.GetRect().width / 8;
+        var buttonWidth = node.GetRect().width / 7;
         
         if (GUI.Button(new Rect(node.GetRect().xMax, node.GetRect().yMin + node.GetRect().height / 2 - buttonHeight/2, buttonWidth, buttonHeight), ""))
         {
@@ -267,7 +281,7 @@ public class SkillTreeEditor : EditorWindow
             if (nodeToConnect != null && nodeToConnect != node)
             {
                 nodeToConnect.AddChild(node.name);
-                node.AddConnection(nodeToConnect);
+                node.MakeConnection(nodeToConnect, node);
                 nodeToConnect = null;
             }   
         }
@@ -275,10 +289,11 @@ public class SkillTreeEditor : EditorWindow
 
     private void DrawConnections(SkillTreeNode node)
     {
-        Vector3 startPosition = new Vector3(node.GetRect().xMax, node.GetRect().center.y);
-        foreach (var childNode in selectedSkillTree.GetChildren(node))
+        Vector3 childPosition = new Vector3(node.GetRect().xMin, node.GetRect().center.y);
+
+        foreach (var connection in node.GetConnections())
         {
-            Vector3 childPosition = new Vector3(childNode.GetRect().xMin, childNode.GetRect().center.y);
+            Vector3 startPosition = new Vector3(connection.GetParent().GetRect().xMax, connection.GetParent().GetRect().center.y);
             Vector3 controlPointOffset = childPosition - startPosition;
             controlPointOffset.y = 0;
             Handles.DrawBezier(
@@ -287,8 +302,6 @@ public class SkillTreeEditor : EditorWindow
                 Color.blue, null, 5f);
         }
     }
-
-    
 
     private void DrawConnectionWithMouse(SkillTreeNode node, Vector3 mousePosition)
     {

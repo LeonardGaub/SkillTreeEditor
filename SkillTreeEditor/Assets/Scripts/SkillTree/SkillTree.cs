@@ -73,7 +73,7 @@ public class SkillTree : ScriptableObject, ISerializationCallbackReceiver
 
     public void UnlockSkill(SkillTreeNode node)
     {
-        node.SetUnlocked(true);
+        node.UnlockNextLevel();
     }
 
 #if UNITY_EDITOR
@@ -114,6 +114,8 @@ public class SkillTree : ScriptableObject, ISerializationCallbackReceiver
     {
         foreach (var node in GetNodes())
         {
+            selectedNode.RemoveConnection(node.name);
+            node.RemoveConnection(selectedNode.name);
             node.RemoveChild(selectedNode.name);
             node.RemoveParent(selectedNode.name);
         }

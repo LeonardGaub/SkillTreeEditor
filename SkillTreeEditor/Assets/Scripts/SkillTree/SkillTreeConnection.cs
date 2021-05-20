@@ -1,19 +1,20 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-[System.Serializable]
-public class SkillTreeConnection
+public class SkillTreeConnection : ScriptableObject
 {
-    [SerializeField] private SkillTreeNode parent;
-    [SerializeField] private SkillTreeNode child;
-    private List<SkillTreeCondition> conditions = new List<SkillTreeCondition>();
-
+    [HideInInspector][SerializeField] private SkillTreeNode parent;
+    [HideInInspector][SerializeField] private SkillTreeNode child;
+    [HideInInspector][SerializeField] private List<SkillTreeCondition> conditions = new List<SkillTreeCondition>();
 
     public SkillTreeConnection(SkillTreeNode parent, SkillTreeNode child)
     {
         this.parent = parent;
         this.child = child;
+        SkillTreeNode.OnSkillUpdated += RefreshName;
     }
 
     public SkillTreeNode GetChild()
@@ -26,6 +27,21 @@ public class SkillTreeConnection
         return parent;
     }
 
+    public List<SkillTreeCondition> GetConditions()
+    {
+        return conditions;
+    }
+
+    public void AddNewCondition()
+    {
+        conditions.Add(new SkillTreeCondition());
+    }
+
+    public void RemoveCondition(int index)
+    {
+        conditions.RemoveAt(index);
+    }
+
     public bool isFullfilled()
     {
         foreach(var condition in conditions)
@@ -36,5 +52,15 @@ public class SkillTreeConnection
             }
         }
         return true;
+    }
+
+    public void RemoveAction()
+    {
+        SkillTreeNode.OnSkillUpdated -= RefreshName;
+    }
+
+    public void RefreshName()
+    {
+        this.name = parent.GetSkillName() + "-" + child.GetSkillName();
     }
 }
