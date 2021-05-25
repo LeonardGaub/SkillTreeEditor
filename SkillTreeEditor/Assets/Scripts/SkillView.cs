@@ -9,6 +9,9 @@ public class SkillView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI skillNameText;
     [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] private Image skillIcon;
+    [SerializeField] private SkillTreeLines line;
+
+    private static float xOffset = 10;
 
     [HideInInspector][SerializeField] private SkillTreeNode skill;
 
@@ -21,14 +24,34 @@ public class SkillView : MonoBehaviour
     {
         return skill;
     }
-    public void SetUp(SkillTreeNode skill)
+    public void SetUp(SkillTreeNode skill, SkillTree tree)
     {
         this.skill = skill;
-        GetComponent<RectTransform>().localPosition = new Vector3(skill.GetRect().x, -skill.GetRect().y, 0);
+        GetComponent<RectTransform>().localPosition = new Vector3(skill.GetRect().x * 1.2f, -skill.GetRect().y * 1.2f, 0);
         skillNameText.text = skill.GetSkillName();
         skillIcon.sprite = skill.GetIcon();
         skill.ResetLevel();
         DisplayLevelText();
+    }
+
+    public Vector2 GetConnectStartPosition()
+    {
+        Vector2 pos = new Vector2();
+        RectTransform rect = GetComponent<RectTransform>();
+        pos.x = rect.localPosition.x + rect.rect.width - xOffset;
+        pos.y = rect.localPosition.y - rect.rect.height / 2;
+
+        return pos;
+    }
+
+    public Vector2 GetConnectEndPosition()
+    {
+        Vector2 pos = new Vector2();
+        RectTransform rect = GetComponent<RectTransform>();
+        pos.x = rect.localPosition.x + xOffset;
+        pos.y = rect.localPosition.y - rect.rect.height / 2;
+
+        return pos;
     }
 
     private void DisplayLevelText()

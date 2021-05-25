@@ -9,10 +9,18 @@ public class SkillTreeView : MonoBehaviour
 {
     [SerializeField] SkillTree tree;
     [SerializeField] SkillView skillUI;
+    [SerializeField] SkillTreeLines line;
     [SerializeField] TextMeshProUGUI skillPointsView;
+    [SerializeField] GameObject skillViewsPrefab;
+    [SerializeField] GameObject skillLinesPrefab;
+
+    [HideInInspector] [SerializeField] GameObject skillViewsParent;
+    [HideInInspector] [SerializeField] GameObject skillLinesParent;
+
+    
     [SerializeField] private int skillPoints;
 
-    [HideInInspector][SerializeField] private List<SkillTreeNode> spawnedSkills = new List<SkillTreeNode>();
+    [HideInInspector][SerializeField] private List<SpawnedSkill> spawnedSkills = new List<SpawnedSkill>();
 
     private void Awake()
     {
@@ -33,37 +41,82 @@ public class SkillTreeView : MonoBehaviour
         {
             if (skill.GetConnections().Count == 0)
             {
-                var newSkill = Instantiate(skillUI, this.transform);
-                newSkill.SetUp(skill);
-                spawnedSkills.Add(skill);
-                BuildChildren(skill, this.transform);
+                var newView = Instantiate(skillUI, skillViewsParent.transform);
+                newView.SetUp(skill, tree);
+                spawnedSkills.Add(new SpawnedSkill(skill, newView));
+                BuildChildren(skill, skillViewsParent.transform);
             }
         }
         Canvas.ForceUpdateCanvases();
+        BuildLines();
     }
 
-    private void BuildChildren(SkillTreeNode skillNode, Transform group)
+    private void BuildLines()
     {
-        if (skillNode.GetChildren().Count == 0) { return; }
-        
-        foreach (var child in tree.GetChildren(skillNode))
+        foreach (var skill in spawnedSkills)
         {
-            if (spawnedSkills.Contains(child)) { continue; }
-            
-            var newSkill = Instantiate(skillUI, group);
-            spawnedSkills.Add(child);
-            newSkill.SetUp(child);
+            foreach (var child in tree.GetChildren(skill.skill))
+            {
+                var newLine = Instantiate(line, skillLinesParent.transform);
+                newLine.Setup(skill.view.GetConnectStartPosition(), GetView(child).GetConnectEndPosition());
+            }
         }
-        foreach (var child in tree.GetChildren(skillNode))
+    }
+
+    private void BuildChildren(SkillTreeNode parentSkillNode, Transform group)
+    {
+        if (parentSkillNode.GetChildren().Count == 0) { return; }
+        
+        foreach (var child in tree.GetChildren(parentSkillNode))
+        {
+            SkillView newSkill;
+            if (!IsSpawned(child)) 
+            {
+                newSkill = Instantiate(skillUI, group);
+                newSkill.SetUp(child, tree);
+                spawnedSkills.Add(new SpawnedSkill(child, newSkill));
+            }
+        }
+        foreach (var child in tree.GetChildren(parentSkillNode))
         {
             BuildChildren(child, group);
         }
         Canvas.ForceUpdateCanvases();
     }
 
+    private bool IsSpawned(SkillTreeNode skill)
+    {
+        foreach(var spawnedSkill in spawnedSkills)
+        {
+            if(spawnedSkill.skill == skill)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private SkillView GetView(SkillTreeNode skill)
+    {
+        foreach (var spawnedSkill in spawnedSkills)
+        {
+            if (spawnedSkill.skill == skill)
+            {
+                return spawnedSkill.view;
+            }
+        }
+        return null;
+    }
+
     private void ResetView()
     {
+        if (skillViewsParent != null) { DestroyImmediate(skillViewsParent.gameObject); }
+        if (skillLinesParent != null) { DestroyImmediate(skillLinesParent.gameObject); }
+
         spawnedSkills.Clear();
+
+        skillLinesParent = Instantiate(skillLinesPrefab, transform);
+        skillViewsParent = Instantiate(skillViewsPrefab, transform);
     }
 
     private void UpdateSkillPointsView(int skillPoints)

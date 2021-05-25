@@ -8,12 +8,12 @@ public class SkillTreeNode : ScriptableObject
     [SerializeField] private Skill skill;
     [SerializeField] private List<SkillTreeConnection> connections = new List<SkillTreeConnection>();
     [HideInInspector][SerializeField] private List<SkillCost> costs = new List<SkillCost>();
-    [HideInInspector][SerializeField] private Rect rect = new Rect(0, 0, 75, 95);
+    [HideInInspector][SerializeField] private Rect rect = new Rect(0, 0, 130, 130);
 
     private bool unlocked = false;
     private int currentLevel;
-    private List<string> children = new List<string>();
-    private List<string> parents = new List<string>();
+    [HideInInspector][SerializeField] private List<string> children = new List<string>();
+    [HideInInspector][SerializeField] private List<string> parents = new List<string>();
 
     public static Action OnSkillUpdated;
 
