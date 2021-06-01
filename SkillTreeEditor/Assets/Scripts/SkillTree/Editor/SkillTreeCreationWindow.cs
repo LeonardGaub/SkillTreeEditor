@@ -28,7 +28,7 @@ public class SkillTreeCreationWindow : EditorWindow
 
         GUILayout.BeginHorizontal();
         if(GUILayout.Button("Create")) { onConfirmPressed.Invoke(input); ; Close(); }
-        if (GUILayout.Button("Cancle")) { Close(); }
+        if (GUILayout.Button("Cancel")) { Close(); }
         GUILayout.EndHorizontal();
 
         Rect rect = GUILayoutUtility.GetRect(CanvasSize, CanvasSize / 2);

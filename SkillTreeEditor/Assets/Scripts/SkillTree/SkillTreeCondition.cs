@@ -19,6 +19,18 @@ public class SkillTreeCondition
         return requiredLevel;
     }
 
+    public string GetRequirementsText(SkillTreeNode parent)
+    {
+        switch (GetConditionType())
+        {
+            case SkillTreeCondition.ConditionType.parentUnlocked:
+                return parent.GetSkillName() + " needs to be unlocked.";
+            case SkillTreeCondition.ConditionType.parentCertainLevel:
+                return parent.GetSkillName() + " needs to be level: " + GetRequiredLevel().ToString();
+        }
+        return "";
+    }
+
     public bool isFullfilled(SkillTreeConnection connection) 
     {
         switch (type)
@@ -30,7 +42,7 @@ public class SkillTreeCondition
                 }
                 return false;
             case ConditionType.parentCertainLevel:
-                if (connection.GetParent().isCertainLevelUnlocked(2))
+                if (connection.GetParent().isCertainLevelUnlocked(requiredLevel))
                 {
                     return true;
                 }

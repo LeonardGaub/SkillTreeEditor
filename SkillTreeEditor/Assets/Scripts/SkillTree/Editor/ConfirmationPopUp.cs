@@ -25,7 +25,7 @@ public class ConfirmationPopUp : EditorWindow
     {
         GUILayout.Label(popUpMessage);
         GUILayout.BeginHorizontal();
-        if (GUILayout.Button("Yes")) { onConfirm.Invoke(); Close(); }
+        if (GUILayout.Button("Yes")) { Close(); onConfirm.Invoke();  }
         if (GUILayout.Button("No")) { Close(); }
         GUILayout.EndHorizontal();
 

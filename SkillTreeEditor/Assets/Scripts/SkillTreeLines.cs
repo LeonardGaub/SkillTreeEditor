@@ -17,11 +17,13 @@ public class SkillTreeLines : MonoBehaviour
     public void Strech(GameObject _sprite, Vector3 _initialPosition, Vector3 _finalPosition, bool _mirrorZ)
     {
         Vector3 centerPos = (_initialPosition + _finalPosition) / 2f;
-        _sprite.GetComponent<RectTransform>().localPosition = centerPos;
         Vector3 direction = _finalPosition - _initialPosition;
         direction = Vector3.Normalize(direction);
+        
+        _sprite.GetComponent<RectTransform>().localPosition = centerPos;
         _sprite.transform.right = direction;
-        if (_mirrorZ) _sprite.transform.right *= -1f;
+
+        if (_mirrorZ) { _sprite.transform.right *= -1f; }
         Vector3 scale = new Vector3(1, 1, 1);
         GetComponent<RectTransform>().sizeDelta = new Vector2(Vector2.Distance(_initialPosition, _finalPosition), 15);
         _sprite.transform.localScale = scale;

@@ -9,28 +9,32 @@ public class SkillView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI skillNameText;
     [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] private Image skillIcon;
-    [SerializeField] private SkillTreeLines line;
 
     private static float xOffset = 10;
 
     [HideInInspector][SerializeField] private SkillTreeNode skill;
+    [HideInInspector][SerializeField] private SkillTreeView view;
 
     private void Start()
     {
+        skill.ResetLevel();
         DisplayLevelText();
+        SkillTreeView.OnSkillUnlocked += SetUnlockable;
     }
 
     public SkillTreeNode GetSkill()
     {
         return skill;
     }
-    public void SetUp(SkillTreeNode skill, SkillTree tree)
+    public void SetUp(SkillTreeNode skill, SkillTreeView view)
     {
         this.skill = skill;
+        this.view = view;
         GetComponent<RectTransform>().localPosition = new Vector3(skill.GetRect().x * 1.2f, -skill.GetRect().y * 1.2f, 0);
         skillNameText.text = skill.GetSkillName();
         skillIcon.sprite = skill.GetIcon();
-        skill.ResetLevel();
+        
+        SetUnlockable();
         DisplayLevelText();
     }
 
@@ -80,7 +84,18 @@ public class SkillView : MonoBehaviour
     public void OnButtonPress()
     {
         if(IsMaxLevel(skill.GetCurrentLevel())) { return; }
-        FindObjectOfType<SkillTreeView>().UnlockSkill(skill);
+        view.UnlockSkill(skill);
+        
         DisplayLevelText();
+    }
+
+    public void SetUnlockable()
+    {
+        GetComponent<Button>().interactable = view.GetTree().isUnlockable(skill);
+    }
+
+    private void OnDestroy()
+    {
+        SkillTreeView.OnSkillUnlocked -= SetUnlockable;
     }
 }

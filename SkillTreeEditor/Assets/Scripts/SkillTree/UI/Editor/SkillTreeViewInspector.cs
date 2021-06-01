@@ -11,9 +11,14 @@ public class SkillTreeViewInspector : Editor
         DrawDefaultInspector();
 
         SkillTreeView skillTreeView = (SkillTreeView)target;
+        if(skillTreeView.GetTree() == null) { return; }
         if (GUILayout.Button("Generate UI"))
         {
             skillTreeView.GenerateUI();
+        }
+        if(GUILayout.Button("Update UI Connections"))
+        {
+            skillTreeView.BuildLines();
         }
     }
 }

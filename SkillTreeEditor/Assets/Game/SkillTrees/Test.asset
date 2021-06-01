@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9182833743153460967
+--- !u!114 &-8202285201664609561
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,81 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b6637da55daf044ba8677ddb748818a, type: 3}
-  m_Name: ff1fbae9-8f0e-4bd0-954a-d6081fba4d68
+  m_Name: f5301c38-785f-4d4d-8d26-60cd67eac978
   m_EditorClassIdentifier: 
-  skill: {fileID: 11400000, guid: c16356bce62c74c499f34dc8d9f34a49, type: 2}
+  skill: {fileID: 11400000, guid: 2baf67b0608742c4e8884760229ea041, type: 2}
   connections:
-  - {fileID: -1301585100270327695}
+  - {fileID: 363886856044175448}
   costs:
   - level: 1
     cost: 3
   rect:
     serializedVersion: 2
-    x: 1208
-    y: 196
+    x: 809
+    y: 69
     width: 75
     height: 95
-  children:
-  - 53c093b9-3a3d-45e7-8a53-425746298b5a
+  children: []
   parents: []
---- !u!114 &-8343655007357984013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b6637da55daf044ba8677ddb748818a, type: 3}
-  m_Name: 3e34fcc5-974e-4efc-a0ec-fbba7d0d4589
-  m_EditorClassIdentifier: 
-  skill: {fileID: 11400000, guid: c16356bce62c74c499f34dc8d9f34a49, type: 2}
-  connections:
-  - {fileID: 2679865845327764321}
-  costs:
-  - level: 1
-    cost: 3
-  - level: 2
-    cost: 1
-  rect:
-    serializedVersion: 2
-    x: 680
-    y: 186
-    width: 75
-    height: 95
-  children:
-  - c07f8eb3-3b7a-4316-9d17-b8cf8674cdfd
-  - f65464aa-340a-4c9e-b055-6011f36d3742
-  parents: []
---- !u!114 &-5736999103375845180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b6637da55daf044ba8677ddb748818a, type: 3}
-  m_Name: 62511ea7-0402-416f-84cc-f5fd5ca54f3e
-  m_EditorClassIdentifier: 
-  skill: {fileID: 11400000, guid: 8429f3e5e2014174a89b2f8ba0772ef6, type: 2}
-  connections: []
-  costs:
-  - level: 1
-    cost: 3
-  rect:
-    serializedVersion: 2
-    x: 462
-    y: 289
-    width: 75
-    height: 95
-  children:
-  - 3e34fcc5-974e-4efc-a0ec-fbba7d0d4589
-  - f65464aa-340a-4c9e-b055-6011f36d3742
-  parents: []
---- !u!114 &-5050050468126396879
+--- !u!114 &-8133747336336533960
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,14 +36,79 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
-  m_Name: Ice-Fire
+  m_Name: Dexterity+-Strength+
   m_EditorClassIdentifier: 
-  parent: {fileID: 4996759544023292360}
-  child: {fileID: -2506631472069179763}
+  parent: {fileID: -6030036226103735558}
+  child: {fileID: 3936568012284632467}
   conditions:
   - type: 0
     requiredLevel: 0
---- !u!114 &-2987179723580761490
+--- !u!114 &-6477483698612247294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
+  m_Name: Ice-Dexterity+
+  m_EditorClassIdentifier: 
+  parent: {fileID: -3675710352004117079}
+  child: {fileID: -6030036226103735558}
+  conditions:
+  - type: 0
+    requiredLevel: 0
+--- !u!114 &-6463487063339198242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
+  m_Name: Strength+-Ice
+  m_EditorClassIdentifier: 
+  parent: {fileID: 3936568012284632467}
+  child: {fileID: -4574429629208150568}
+  conditions:
+  - type: 1
+    requiredLevel: 2
+--- !u!114 &-6030036226103735558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6637da55daf044ba8677ddb748818a, type: 3}
+  m_Name: 8af4b611-2dbf-406e-bbdc-9d97618f6958
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: 46598c4ff8f701c49aac70e6517dac6f, type: 2}
+  connections:
+  - {fileID: -6477483698612247294}
+  costs:
+  - level: 1
+    cost: 3
+  - level: 2
+    cost: 5
+  - level: 3
+    cost: 6
+  rect:
+    serializedVersion: 2
+    x: 470
+    y: 166
+    width: 75
+    height: 95
+  children:
+  - 88e28b02-050c-4d22-86ff-4cadef62f649
+  parents: []
+--- !u!114 &-5949951322532674965
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,39 +120,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
   m_Name: Ice-Thunder
   m_EditorClassIdentifier: 
-  parent: {fileID: -9182833743153460967}
-  child: {fileID: 1803835389131522404}
+  parent: {fileID: -3675710352004117079}
+  child: {fileID: 7626351582102772073}
   conditions:
   - type: 0
     requiredLevel: 0
---- !u!114 &-2506631472069179763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b6637da55daf044ba8677ddb748818a, type: 3}
-  m_Name: 611f0e7d-7401-4cac-917f-7c65ca87f529
-  m_EditorClassIdentifier: 
-  skill: {fileID: 11400000, guid: f6be8fe70c0f436468c91ee7776a424c, type: 2}
-  connections:
-  - {fileID: -5050050468126396879}
-  costs:
-  - level: 1
-    cost: 3
-  rect:
-    serializedVersion: 2
-    x: 1188
-    y: 65
-    width: 75
-    height: 95
-  children:
-  - 53c093b9-3a3d-45e7-8a53-425746298b5a
-  parents: []
---- !u!114 &-1828430171445534282
+--- !u!114 &-5859516592514949617
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -155,14 +135,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
-  m_Name: Thunder-Thunder
+  m_Name: Intelligence+-Strength+
   m_EditorClassIdentifier: 
-  parent: {fileID: -1373232912790395746}
-  child: {fileID: 1803835389131522404}
+  parent: {fileID: -2350682296711968485}
+  child: {fileID: 3936568012284632467}
   conditions:
   - type: 0
     requiredLevel: 0
---- !u!114 &-1373232912790395746
+--- !u!114 &-4574429629208150568
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,24 +152,54 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b6637da55daf044ba8677ddb748818a, type: 3}
-  m_Name: b2c3e8da-b113-4d86-b589-0b89b716b53a
+  m_Name: 73db7012-8752-4f08-a9a9-a9a630e84f2f
   m_EditorClassIdentifier: 
-  skill: {fileID: 11400000, guid: 8429f3e5e2014174a89b2f8ba0772ef6, type: 2}
+  skill: {fileID: 11400000, guid: 8a2c24b77805e1f4b810cb58f6844607, type: 2}
   connections:
-  - {fileID: 3551790404663231605}
+  - {fileID: -6463487063339198242}
   costs:
   - level: 1
     cost: 3
   rect:
     serializedVersion: 2
-    x: 1205
-    y: 310
+    x: 817
+    y: 268
+    width: 75
+    height: 95
+  children: []
+  parents: []
+--- !u!114 &-3675710352004117079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6637da55daf044ba8677ddb748818a, type: 3}
+  m_Name: 97006ea0-1f74-4c10-928c-e96a8ca93052
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: 8a2c24b77805e1f4b810cb58f6844607, type: 2}
+  connections:
+  - {fileID: 6187903407212021248}
+  costs:
+  - level: 1
+    cost: 3
+  - level: 2
+    cost: 1
+  rect:
+    serializedVersion: 2
+    x: 300
+    y: 148
     width: 75
     height: 95
   children:
-  - 53c093b9-3a3d-45e7-8a53-425746298b5a
+  - d9510c5b-5cbe-4ebe-be6e-d05768cb7feb
+  - 8af4b611-2dbf-406e-bbdc-9d97618f6958
+  - 61e3d09d-2ce3-488f-9160-ab1f2092acef
   parents: []
---- !u!114 &-1301585100270327695
+--- !u!114 &-3071808093902210737
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,13 +209,40 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
-  m_Name: Ice-Ice
+  m_Name: Thunder-Strength+
   m_EditorClassIdentifier: 
-  parent: {fileID: 4996759544023292360}
-  child: {fileID: -9182833743153460967}
+  parent: {fileID: 7626351582102772073}
+  child: {fileID: 3936568012284632467}
   conditions:
-  - type: 0
-    requiredLevel: 0
+  - type: 1
+    requiredLevel: 4
+--- !u!114 &-2350682296711968485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6637da55daf044ba8677ddb748818a, type: 3}
+  m_Name: d9510c5b-5cbe-4ebe-be6e-d05768cb7feb
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: 2e6d6befea2fce74dbd933a04f802f2a, type: 2}
+  connections:
+  - {fileID: 2519588155523795467}
+  costs:
+  - level: 1
+    cost: 3
+  rect:
+    serializedVersion: 2
+    x: 467
+    y: 280
+    width: 75
+    height: 95
+  children:
+  - 88e28b02-050c-4d22-86ff-4cadef62f649
+  parents: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,16 +256,49 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   nodes:
-  - {fileID: -8343655007357984013}
-  - {fileID: 3444163832314466804}
-  - {fileID: -5736999103375845180}
-  - {fileID: 4308325319165382403}
-  - {fileID: 4996759544023292360}
-  - {fileID: -2506631472069179763}
-  - {fileID: -1373232912790395746}
-  - {fileID: -9182833743153460967}
-  - {fileID: 1803835389131522404}
---- !u!114 &1803835389131522404
+  - {fileID: 9169848367550456232}
+  - {fileID: -3675710352004117079}
+  - {fileID: 7626351582102772073}
+  - {fileID: -6030036226103735558}
+  - {fileID: -2350682296711968485}
+  - {fileID: 3936568012284632467}
+  - {fileID: -8202285201664609561}
+  - {fileID: -4574429629208150568}
+--- !u!114 &363886856044175448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
+  m_Name: Strength+-Fire
+  m_EditorClassIdentifier: 
+  parent: {fileID: 3936568012284632467}
+  child: {fileID: -8202285201664609561}
+  conditions:
+  - type: 0
+    requiredLevel: 0
+--- !u!114 &2519588155523795467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
+  m_Name: Ice-Intelligence+
+  m_EditorClassIdentifier: 
+  parent: {fileID: -3675710352004117079}
+  child: {fileID: -2350682296711968485}
+  conditions:
+  - type: 1
+    requiredLevel: 2
+--- !u!114 &3936568012284632467
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -238,25 +308,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b6637da55daf044ba8677ddb748818a, type: 3}
-  m_Name: 53c093b9-3a3d-45e7-8a53-425746298b5a
+  m_Name: 88e28b02-050c-4d22-86ff-4cadef62f649
   m_EditorClassIdentifier: 
-  skill: {fileID: 11400000, guid: 8429f3e5e2014174a89b2f8ba0772ef6, type: 2}
+  skill: {fileID: 11400000, guid: 56898f566e9569d4996ed4d43b1b284b, type: 2}
   connections:
-  - {fileID: -1828430171445534282}
-  - {fileID: -2987179723580761490}
-  - {fileID: 9160850667775061284}
+  - {fileID: -5859516592514949617}
+  - {fileID: -8133747336336533960}
+  - {fileID: -3071808093902210737}
   costs:
   - level: 1
     cost: 3
+  - level: 2
+    cost: 1
   rect:
     serializedVersion: 2
-    x: 1415
-    y: 185
+    x: 654
+    y: 165
     width: 75
     height: 95
-  children: []
+  children:
+  - 73db7012-8752-4f08-a9a9-a9a630e84f2f
+  - f5301c38-785f-4d4d-8d26-60cd67eac978
   parents: []
---- !u!114 &2034614027976409244
+--- !u!114 &6187903407212021248
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -268,29 +342,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
   m_Name: Fire-Ice
   m_EditorClassIdentifier: 
-  parent: {fileID: 4308325319165382403}
-  child: {fileID: 4996759544023292360}
+  parent: {fileID: 9169848367550456232}
+  child: {fileID: -3675710352004117079}
   conditions:
   - type: 0
     requiredLevel: 0
---- !u!114 &2679865845327764321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
-  m_Name: Thunder-Ice
-  m_EditorClassIdentifier: 
-  parent: {fileID: -5736999103375845180}
-  child: {fileID: -8343655007357984013}
-  conditions:
-  - type: 0
-    requiredLevel: 0
---- !u!114 &3444163832314466804
+  - type: 1
+    requiredLevel: 1
+--- !u!114 &7626351582102772073
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -300,58 +359,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b6637da55daf044ba8677ddb748818a, type: 3}
-  m_Name: c07f8eb3-3b7a-4316-9d17-b8cf8674cdfd
+  m_Name: 61e3d09d-2ce3-488f-9160-ab1f2092acef
   m_EditorClassIdentifier: 
-  skill: {fileID: 11400000, guid: 8429f3e5e2014174a89b2f8ba0772ef6, type: 2}
+  skill: {fileID: 11400000, guid: 2e7f2a52aaea61448a7f01352c64b6bc, type: 2}
   connections:
-  - {fileID: 8460265844339338738}
+  - {fileID: -5949951322532674965}
   costs:
   - level: 1
     cost: 3
+  - level: 2
+    cost: 1
+  - level: 3
+    cost: 1
+  - level: 4
+    cost: 1
   rect:
     serializedVersion: 2
-    x: 835
-    y: 97
+    x: 472
+    y: 48
     width: 75
     height: 95
   children:
-  - dd754a9d-9264-452c-83a4-d3b942f63dca
+  - 88e28b02-050c-4d22-86ff-4cadef62f649
   parents: []
---- !u!114 &3551790404663231605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
-  m_Name: Ice-Thunder
-  m_EditorClassIdentifier: 
-  parent: {fileID: 4996759544023292360}
-  child: {fileID: -1373232912790395746}
-  conditions:
-  - type: 0
-    requiredLevel: 0
---- !u!114 &3632343316216753593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
-  m_Name: Thunder-Ice
-  m_EditorClassIdentifier: 
-  parent: {fileID: 3444163832314466804}
-  child: {fileID: 4996759544023292360}
-  conditions:
-  - type: 0
-    requiredLevel: 0
---- !u!114 &4308325319165382403
+--- !u!114 &9169848367550456232
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -361,119 +392,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b6637da55daf044ba8677ddb748818a, type: 3}
-  m_Name: f65464aa-340a-4c9e-b055-6011f36d3742
+  m_Name: 8de906c7-7bcf-4470-b087-3a9dac95dec6
   m_EditorClassIdentifier: 
-  skill: {fileID: 11400000, guid: f6be8fe70c0f436468c91ee7776a424c, type: 2}
-  connections:
-  - {fileID: 4482669765419729300}
-  - {fileID: 5783567142604661634}
+  skill: {fileID: 11400000, guid: 2baf67b0608742c4e8884760229ea041, type: 2}
+  connections: []
   costs:
   - level: 1
     cost: 3
   rect:
     serializedVersion: 2
-    x: 863
-    y: 283
+    x: 145
+    y: 148
     width: 75
     height: 95
   children:
-  - dd754a9d-9264-452c-83a4-d3b942f63dca
+  - 97006ea0-1f74-4c10-928c-e96a8ca93052
   parents: []
---- !u!114 &4482669765419729300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
-  m_Name: Ice-Fire
-  m_EditorClassIdentifier: 
-  parent: {fileID: -8343655007357984013}
-  child: {fileID: 4308325319165382403}
-  conditions:
-  - type: 0
-    requiredLevel: 0
---- !u!114 &4996759544023292360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b6637da55daf044ba8677ddb748818a, type: 3}
-  m_Name: dd754a9d-9264-452c-83a4-d3b942f63dca
-  m_EditorClassIdentifier: 
-  skill: {fileID: 11400000, guid: c16356bce62c74c499f34dc8d9f34a49, type: 2}
-  connections:
-  - {fileID: 3632343316216753593}
-  - {fileID: 2034614027976409244}
-  costs:
-  - level: 1
-    cost: 3
-  rect:
-    serializedVersion: 2
-    x: 1041
-    y: 192
-    width: 75
-    height: 95
-  children:
-  - 611f0e7d-7401-4cac-917f-7c65ca87f529
-  - ff1fbae9-8f0e-4bd0-954a-d6081fba4d68
-  - b2c3e8da-b113-4d86-b589-0b89b716b53a
-  parents: []
---- !u!114 &5783567142604661634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
-  m_Name: Thunder-Fire
-  m_EditorClassIdentifier: 
-  parent: {fileID: -5736999103375845180}
-  child: {fileID: 4308325319165382403}
-  conditions:
-  - type: 0
-    requiredLevel: 0
---- !u!114 &8460265844339338738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
-  m_Name: Ice-Thunder
-  m_EditorClassIdentifier: 
-  parent: {fileID: -8343655007357984013}
-  child: {fileID: 3444163832314466804}
-  conditions:
-  - type: 0
-    requiredLevel: 0
---- !u!114 &9160850667775061284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
-  m_Name: Fire-Thunder
-  m_EditorClassIdentifier: 
-  parent: {fileID: -2506631472069179763}
-  child: {fileID: 1803835389131522404}
-  conditions:
-  - type: 0
-    requiredLevel: 0

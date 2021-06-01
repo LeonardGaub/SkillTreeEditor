@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Skill Tree", menuName = "Skill Tree")]
 public class SkillTree : ScriptableObject, ISerializationCallbackReceiver
 {
     [SerializeField] List<SkillTreeNode> nodes = new List<SkillTreeNode>();
@@ -22,6 +21,17 @@ public class SkillTree : ScriptableObject, ISerializationCallbackReceiver
     public IEnumerable<SkillTreeNode> GetNodes()
     {
         return nodes;
+    }
+
+    public IEnumerable<SkillBase> GetAllUnlockedSkills()
+    {
+        foreach(var skill in GetNodes())
+        {
+            if (skill.IsUnlocked())
+            {
+                yield return skill.GetSkill();
+            }
+        }
     }
 
     public SkillTreeNode GetRootNode()

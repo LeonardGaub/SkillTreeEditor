@@ -76,20 +76,6 @@ public class SkillTreeEditor : EditorWindow
             toolbarInt = GUILayout.Toolbar(toolbarInt, new string[] { "New SkillTree" }, SkillTreeEditorStyles.GetToolBarStyle()); ;
             HandleToolbarEvents();
         }
-
-        //Testing
-        string tempString = GUI.GetNameOfFocusedControl();
-        if ((tempString == "xAxis" || tempString == "yAxis" || tempString == "zAxis") && GUIUtility.hotControl != 0)
-        {
-            
-            Debug.Log("dragging");
-        }
-
-        if ((tempString == "xAxis" || tempString == "yAxis" || tempString == "zAxis") && GUIUtility.hotControl == 0)
-        {
-            
-            Debug.Log("released");
-        }
     }
 
     private void ProcessEvents()
@@ -238,7 +224,7 @@ public class SkillTreeEditor : EditorWindow
 
         GUILayout.BeginArea(node.GetRect(), style);
 
-        var result = (Skill)EditorGUILayout.ObjectField(node.GetSkill(), typeof(Skill), false);
+        var result = (SkillBase)EditorGUILayout.ObjectField(node.GetSkill(), typeof(SkillBase), false);
         node.SetSkill(result);
 
         EditorGUILayout.LabelField(node.GetSkillName(), SkillTreeEditorStyles.GetLableStyle());

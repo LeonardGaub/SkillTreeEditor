@@ -8,7 +8,11 @@ public class SkillTooltip : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI title;
     [SerializeField] TextMeshProUGUI description;
+    [SerializeField] TextMeshProUGUI requirements;
     [SerializeField] TextMeshProUGUI cost;
+    [SerializeField] TextMeshProUGUI effects;
+    [SerializeField] GameObject requirementsParent;
+
 
     private SkillTreeNode skill;
 
@@ -16,12 +20,41 @@ public class SkillTooltip : MonoBehaviour
     {
         this.skill = skill;
         title.text = skill.GetSkillName();
-        description.text = "In work";
-        cost.text = "Cost: " + skill.GetCosts()[skill.GetCurrentLevel()].GetCost().ToString();
+        description.text = skill.GetSkillDescription();
+        effects.text = skill.GetSkill().GetEffect();
+        DisplayRequirements();
+        DisplayCostText();
     }
 
-    public void OnButtonPress()
+    private void DisplayRequirements()
     {
-        skill.UnlockNextLevel();
+        requirementsParent.SetActive(true);
+        requirements.text = "";
+        foreach(var connection in skill.GetConnections())
+        {
+            if (!connection.isFullfilled())
+            {
+                foreach(var condition in connection.GetConditions())
+                {
+                    requirements.text += condition.GetRequirementsText(connection.GetParent()) + "\n";
+                }
+            }
+        }
+        if(requirements.text == "")
+        {
+            requirementsParent.SetActive(false);
+        }
+    }
+
+    private void DisplayCostText()
+    {
+        if(skill.GetCosts().Count > skill.GetCurrentLevel())
+        {
+            cost.text = "Cost: " + skill.GetCosts()[skill.GetCurrentLevel()].GetCost().ToString();
+        }
+        else
+        {
+            cost.text = "Max Level";
+        }
     }
 }

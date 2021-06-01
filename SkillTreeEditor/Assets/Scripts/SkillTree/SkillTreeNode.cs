@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class SkillTreeNode : ScriptableObject
 {
-    [SerializeField] private Skill skill;
+    [SerializeField] private SkillBase skill;
     [SerializeField] private List<SkillTreeConnection> connections = new List<SkillTreeConnection>();
     [HideInInspector][SerializeField] private List<SkillCost> costs = new List<SkillCost>();
-    [HideInInspector][SerializeField] private Rect rect = new Rect(0, 0, 130, 130);
+    [HideInInspector][SerializeField] private Rect rect = new Rect(0, 0, 75, 95);
 
     private bool unlocked = false;
     private int currentLevel;
@@ -25,6 +25,11 @@ public class SkillTreeNode : ScriptableObject
     public string GetSkillName()
     {
         return skill != null ? skill.name: "";
+    }
+
+    public string GetSkillDescription()
+    {
+        return skill != null ? skill.GetDescription() : "";
     }
 
     public List<string> GetChildren()
@@ -76,7 +81,8 @@ public class SkillTreeNode : ScriptableObject
         if (currentLevel < costs.Count)
         {
             currentLevel++;
-            Debug.Log("current: " + currentLevel + "," + "Max: " + GetCosts().Count.ToString());    
+            if(PlayerDemo.instance == null){ return; };
+            skill.OnUnlock(currentLevel);  
         }
     }
 
@@ -86,7 +92,7 @@ public class SkillTreeNode : ScriptableObject
         currentLevel = 0;
     }
 
-    public Skill GetSkill()
+    public SkillBase GetSkill()
     {
         return skill;
     }
@@ -133,7 +139,7 @@ public class SkillTreeNode : ScriptableObject
         rect.position = pos;
         EditorUtility.SetDirty(this);
     }
-    public void SetSkill(Skill skill)
+    public void SetSkill(SkillBase skill)
     {
         if(skill != this.skill)
         {

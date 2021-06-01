@@ -83,7 +83,5 @@ public abstract class TooltipSpawner : MonoBehaviour, IPointerEnterHandler, IPoi
             Destroy(tooltip);
         }
     }
-
-
 }
 
