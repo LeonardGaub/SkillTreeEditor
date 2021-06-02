@@ -1,30 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &5813085019917787181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3157270498112245597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecf8cabadb7e0584ba0f485ec351d3f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tree: {fileID: 11400000, guid: eeea4938fc878c546b8ec6978a287428, type: 2}
-  skillView: {fileID: 5426520087327595647, guid: bf9a3662374c9a44d8789069b52893e5, type: 3}
-  line: {fileID: 5525615093872255563, guid: ed20d511c9dbe3a4cb345f9a93c1bb62, type: 3}
-  skillViewsPrefab: {fileID: 85567716658209930, guid: ce6e31e0c70594240b915647e4d18b15, type: 3}
-  skillLinesPrefab: {fileID: 5753300176646317614, guid: 2974e4c8c4438bf4ba595833e14e617e, type: 3}
-  skillViewsParent: {fileID: 0}
-  skillLinesParent: {fileID: 0}
-  skillPoints: 100
-  spawnedSkills:
-  - skill: {fileID: 9169848367550456232, guid: eeea4938fc878c546b8ec6978a287428, type: 2}
-    view: {fileID: 0}
-  - skill: {fileID: -3675710352004117079, guid: eeea4938fc878c546b8ec6978a287428, type: 2}
-    view: {fileID: 0}
 --- !u!1 &3157270498115727572
 GameObject:
   m_ObjectHideFlags: 0
@@ -37,7 +12,6 @@ GameObject:
   - component: {fileID: 3157270498115727571}
   - component: {fileID: 3157270498115727570}
   - component: {fileID: 3157270498115727573}
-  - component: {fileID: 1760530565982840101}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -125,20 +99,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1760530565982840101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3157270498115727572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9518f4b816a73d428b30c6e513b4807, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  toggleKey: 112
-  uiContainer: {fileID: 3157270498112245597}
 --- !u!1001 &604840504821542067
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -234,47 +194,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkillTreeView
       objectReference: {fileID: 0}
-    - target: {fileID: 8149009847270763834, guid: 417dbc5bc1c9a844aa8d7fa27c3cc341, type: 3}
-      propertyPath: skillViewsParent
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8149009847270763834, guid: 417dbc5bc1c9a844aa8d7fa27c3cc341, type: 3}
-      propertyPath: skillLinesParent
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8605612279637695284, guid: 417dbc5bc1c9a844aa8d7fa27c3cc341, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8605612279637695284, guid: 417dbc5bc1c9a844aa8d7fa27c3cc341, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8605612279637695284, guid: 417dbc5bc1c9a844aa8d7fa27c3cc341, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8605612279637695284, guid: 417dbc5bc1c9a844aa8d7fa27c3cc341, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -179.36475
-      objectReference: {fileID: 0}
-    - target: {fileID: 8605612279637695284, guid: 417dbc5bc1c9a844aa8d7fa27c3cc341, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 27.930176
-      objectReference: {fileID: 0}
-    - target: {fileID: 8605612279637695285, guid: 417dbc5bc1c9a844aa8d7fa27c3cc341, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2572738420005331944, guid: 417dbc5bc1c9a844aa8d7fa27c3cc341, type: 3}
-    - {fileID: 2572738420005331947, guid: 417dbc5bc1c9a844aa8d7fa27c3cc341, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 417dbc5bc1c9a844aa8d7fa27c3cc341, type: 3}
---- !u!1 &3157270498112245597 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2572738420005331950, guid: 417dbc5bc1c9a844aa8d7fa27c3cc341, type: 3}
-  m_PrefabInstance: {fileID: 604840504821542067}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3157270498112245594 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2572738420005331945, guid: 417dbc5bc1c9a844aa8d7fa27c3cc341, type: 3}

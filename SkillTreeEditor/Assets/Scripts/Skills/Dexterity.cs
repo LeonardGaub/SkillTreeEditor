@@ -9,8 +9,12 @@ public class Dexterity : SkillBase
 
     public override void OnUnlock(int currentLevel)
     {
-        PlayerDemo.instance.IncreaseDex(valueToIncrease);
+        onSkillUnlock?.Invoke(this);
     }
+    public override void ActivateEffect(PlayerDemo player)
+    {
+        player.IncreaseDex(valueToIncrease);
+    } 
 
     public override string GetEffect()
     {

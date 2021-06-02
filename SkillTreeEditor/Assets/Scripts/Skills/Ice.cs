@@ -8,7 +8,12 @@ public class Ice : SkillBase
 {
     public override void OnUnlock(int currentLevel)
     {
-        PlayerDemo.instance.AddAbility(this);
+        onSkillUnlock?.Invoke(this);
+    }
+
+    public override void ActivateEffect(PlayerDemo player)
+    {
+        player.AddAbility(this);
     }
 
     public override string GetEffect()

@@ -279,7 +279,8 @@ public class SkillTreeEditor : EditorWindow
 
         foreach (var connection in node.GetConnections())
         {
-            Vector3 startPosition = new Vector3(connection.GetParent().GetRect().xMax, connection.GetParent().GetRect().center.y);
+            Vector3 startPosition = new Vector3(connection.GetParent().GetRect().xMax, 
+                connection.GetParent().GetRect().center.y);
             Vector3 controlPointOffset = childPosition - startPosition;
             controlPointOffset.y = 0;
             Handles.DrawBezier(

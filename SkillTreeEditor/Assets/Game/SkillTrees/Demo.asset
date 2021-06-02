@@ -1,0 +1,479 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9214881674268587369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6637da55daf044ba8677ddb748818a, type: 3}
+  m_Name: 50bda565-fe19-4087-8059-2dbfc94561c9
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: 8a2c24b77805e1f4b810cb58f6844607, type: 2}
+  connections:
+  - {fileID: 5452700548568277096}
+  costs:
+  - level: 1
+    cost: 3
+  - level: 2
+    cost: 4
+  - level: 3
+    cost: 5
+  rect:
+    serializedVersion: 2
+    x: 301
+    y: 296
+    width: 75
+    height: 95
+  children:
+  - 2fe50e3e-0279-483d-a2a3-eaf9ad06419b
+  - d0e82e7a-e00b-40b0-961a-aa84ed57a747
+  parents: []
+--- !u!114 &-7109634389734822745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
+  m_Name: Dexterity+-Thunder
+  m_EditorClassIdentifier: 
+  parent: {fileID: -5929492020768357771}
+  child: {fileID: 4944392245631307225}
+  conditions:
+  - type: 0
+    requiredLevel: 0
+--- !u!114 &-5929492020768357771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6637da55daf044ba8677ddb748818a, type: 3}
+  m_Name: 628dee94-0d66-41df-99b4-602f77d6710c
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: 46598c4ff8f701c49aac70e6517dac6f, type: 2}
+  connections:
+  - {fileID: 7032899188120780874}
+  costs:
+  - level: 1
+    cost: 3
+  - level: 2
+    cost: 4
+  - level: 3
+    cost: 5
+  - level: 4
+    cost: 6
+  rect:
+    serializedVersion: 2
+    x: 295
+    y: 163
+    width: 75
+    height: 95
+  children:
+  - 2fe50e3e-0279-483d-a2a3-eaf9ad06419b
+  - d0e82e7a-e00b-40b0-961a-aa84ed57a747
+  parents: []
+--- !u!114 &-5447650390079316267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6637da55daf044ba8677ddb748818a, type: 3}
+  m_Name: d0e82e7a-e00b-40b0-961a-aa84ed57a747
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: 2baf67b0608742c4e8884760229ea041, type: 2}
+  connections:
+  - {fileID: 6916244572374340255}
+  - {fileID: 4054919531765824099}
+  - {fileID: 3175098882537525515}
+  costs:
+  - level: 1
+    cost: 3
+  rect:
+    serializedVersion: 2
+    x: 469
+    y: 82
+    width: 75
+    height: 95
+  children:
+  - b910310d-43ba-4609-8ba9-250eb65a71ee
+  parents: []
+--- !u!114 &-3464478935461633791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
+  m_Name: Ice-Thunder
+  m_EditorClassIdentifier: 
+  parent: {fileID: -9214881674268587369}
+  child: {fileID: 4944392245631307225}
+  conditions:
+  - type: 0
+    requiredLevel: 0
+--- !u!114 &-1700184359221524970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
+  m_Name: Thunder-Strength+
+  m_EditorClassIdentifier: 
+  parent: {fileID: 4944392245631307225}
+  child: {fileID: 2972048451505620017}
+  conditions:
+  - type: 0
+    requiredLevel: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f2113d299013e94b9b125dc92a760a3, type: 3}
+  m_Name: Demo
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 4788961166093126018}
+  - {fileID: 7092721626819683731}
+  - {fileID: -5929492020768357771}
+  - {fileID: -9214881674268587369}
+  - {fileID: 4944392245631307225}
+  - {fileID: -5447650390079316267}
+  - {fileID: 2972048451505620017}
+  - {fileID: 5963484498914907502}
+--- !u!114 &1242084335340631190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
+  m_Name: Fire-Strength+
+  m_EditorClassIdentifier: 
+  parent: {fileID: -5447650390079316267}
+  child: {fileID: 2972048451505620017}
+  conditions:
+  - type: 0
+    requiredLevel: 0
+--- !u!114 &2972048451505620017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6637da55daf044ba8677ddb748818a, type: 3}
+  m_Name: b910310d-43ba-4609-8ba9-250eb65a71ee
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: 56898f566e9569d4996ed4d43b1b284b, type: 2}
+  connections:
+  - {fileID: 1242084335340631190}
+  - {fileID: -1700184359221524970}
+  costs:
+  - level: 1
+    cost: 2
+  - level: 2
+    cost: 3
+  - level: 3
+    cost: 4
+  rect:
+    serializedVersion: 2
+    x: 602
+    y: 173
+    width: 75
+    height: 95
+  children:
+  - a2e27c76-7f4d-43af-80ad-5ebbfdced326
+  parents: []
+--- !u!114 &3175098882537525515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
+  m_Name: Ice-Fire
+  m_EditorClassIdentifier: 
+  parent: {fileID: -9214881674268587369}
+  child: {fileID: -5447650390079316267}
+  conditions:
+  - type: 1
+    requiredLevel: 3
+--- !u!114 &4054919531765824099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
+  m_Name: Dexterity+-Fire
+  m_EditorClassIdentifier: 
+  parent: {fileID: -5929492020768357771}
+  child: {fileID: -5447650390079316267}
+  conditions:
+  - type: 0
+    requiredLevel: 0
+--- !u!114 &4788961166093126018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6637da55daf044ba8677ddb748818a, type: 3}
+  m_Name: 99469889-5e58-47fe-8b77-ce5d4c5bc554
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: 2e6d6befea2fce74dbd933a04f802f2a, type: 2}
+  connections: []
+  costs:
+  - level: 1
+    cost: 3
+  - level: 2
+    cost: 2
+  - level: 3
+    cost: 3
+  rect:
+    serializedVersion: 2
+    x: 130
+    y: 163
+    width: 75
+    height: 95
+  children:
+  - 0c106c9e-2386-4778-8c58-503a94f53d69
+  - 628dee94-0d66-41df-99b4-602f77d6710c
+  - 50bda565-fe19-4087-8059-2dbfc94561c9
+  parents: []
+--- !u!114 &4944392245631307225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6637da55daf044ba8677ddb748818a, type: 3}
+  m_Name: 2fe50e3e-0279-483d-a2a3-eaf9ad06419b
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: 2e7f2a52aaea61448a7f01352c64b6bc, type: 2}
+  connections:
+  - {fileID: -3464478935461633791}
+  - {fileID: -7109634389734822745}
+  costs:
+  - level: 1
+    cost: 3
+  - level: 2
+    cost: 4
+  - level: 3
+    cost: 5
+  - level: 4
+    cost: 6
+  - level: 5
+    cost: 7
+  rect:
+    serializedVersion: 2
+    x: 471
+    y: 253
+    width: 75
+    height: 95
+  children:
+  - b910310d-43ba-4609-8ba9-250eb65a71ee
+  - a2e27c76-7f4d-43af-80ad-5ebbfdced326
+  parents: []
+--- !u!114 &5452700548568277096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
+  m_Name: Intelligence+-Ice
+  m_EditorClassIdentifier: 
+  parent: {fileID: 4788961166093126018}
+  child: {fileID: -9214881674268587369}
+  conditions:
+  - type: 1
+    requiredLevel: 2
+--- !u!114 &5509334855686362097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
+  m_Name: Strength+-Intelligence+
+  m_EditorClassIdentifier: 
+  parent: {fileID: 2972048451505620017}
+  child: {fileID: 5963484498914907502}
+  conditions:
+  - type: 0
+    requiredLevel: 0
+--- !u!114 &5583098420792164667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
+  m_Name: Thunder-Intelligence+
+  m_EditorClassIdentifier: 
+  parent: {fileID: 4944392245631307225}
+  child: {fileID: 5963484498914907502}
+  conditions:
+  - type: 1
+    requiredLevel: 4
+--- !u!114 &5963484498914907502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6637da55daf044ba8677ddb748818a, type: 3}
+  m_Name: a2e27c76-7f4d-43af-80ad-5ebbfdced326
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: 2e6d6befea2fce74dbd933a04f802f2a, type: 2}
+  connections:
+  - {fileID: 5509334855686362097}
+  - {fileID: 5583098420792164667}
+  costs:
+  - level: 1
+    cost: 3
+  rect:
+    serializedVersion: 2
+    x: 769
+    y: 174
+    width: 75
+    height: 95
+  children: []
+  parents: []
+--- !u!114 &6916244572374340255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
+  m_Name: Strength+-Fire
+  m_EditorClassIdentifier: 
+  parent: {fileID: 7092721626819683731}
+  child: {fileID: -5447650390079316267}
+  conditions:
+  - type: 0
+    requiredLevel: 0
+--- !u!114 &7032899188120780874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
+  m_Name: Intelligence+-Dexterity+
+  m_EditorClassIdentifier: 
+  parent: {fileID: 4788961166093126018}
+  child: {fileID: -5929492020768357771}
+  conditions:
+  - type: 0
+    requiredLevel: 0
+--- !u!114 &7092721626819683731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6637da55daf044ba8677ddb748818a, type: 3}
+  m_Name: 0c106c9e-2386-4778-8c58-503a94f53d69
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: 56898f566e9569d4996ed4d43b1b284b, type: 2}
+  connections:
+  - {fileID: 8825109119420404485}
+  costs:
+  - level: 1
+    cost: 3
+  - level: 2
+    cost: 1
+  rect:
+    serializedVersion: 2
+    x: 293
+    y: 25
+    width: 75
+    height: 95
+  children:
+  - d0e82e7a-e00b-40b0-961a-aa84ed57a747
+  parents: []
+--- !u!114 &8825109119420404485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59679d0af20d03749b56964850eaf4ae, type: 3}
+  m_Name: Intelligence+-Strength+
+  m_EditorClassIdentifier: 
+  parent: {fileID: 4788961166093126018}
+  child: {fileID: 7092721626819683731}
+  conditions:
+  - type: 0
+    requiredLevel: 0

@@ -81,7 +81,6 @@ public class SkillTreeNode : ScriptableObject
         if (currentLevel < costs.Count)
         {
             currentLevel++;
-            if(PlayerDemo.instance == null){ return; };
             skill.OnUnlock(currentLevel);  
         }
     }

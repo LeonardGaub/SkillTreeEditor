@@ -9,7 +9,12 @@ public class Intelligence : SkillBase
 
     public override void OnUnlock(int currentLevel)
     {
-        PlayerDemo.instance.IncreaseInt(valueToIncrease);
+        onSkillUnlock?.Invoke(this);
+    }
+
+    public override void ActivateEffect(PlayerDemo player)
+    {
+        player.IncreaseInt(valueToIncrease);
     }
 
     public override string GetEffect()

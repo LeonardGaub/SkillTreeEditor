@@ -9,7 +9,12 @@ public class Strength : SkillBase
 
     public override void OnUnlock(int currentLevel)
     {
-        PlayerDemo.instance.IncreaseStr(valueToIncrease);
+        onSkillUnlock?.Invoke(this);
+    }
+
+    public override void ActivateEffect(PlayerDemo player)
+    {
+        player.IncreaseStr(valueToIncrease);
     }
 
     public override string GetEffect()

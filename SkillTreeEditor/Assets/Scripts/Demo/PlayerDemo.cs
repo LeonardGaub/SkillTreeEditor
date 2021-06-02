@@ -12,6 +12,7 @@ public class PlayerDemo : MonoBehaviour
         {
             instance = this;
         }
+        SkillBase.onSkillUnlock += SkillUnlocked;
     }
 
     public int strength = 0;
@@ -49,6 +50,16 @@ public class PlayerDemo : MonoBehaviour
     {
         unlockedAbilities.Add(newAbility);
         OnAbilitiesUpdated?.Invoke(unlockedAbilities);
+    }
+
+    private void SkillUnlocked(SkillBase skill)
+    {
+        skill.ActivateEffect(this);
+    }
+
+    private void OnDestroy()
+    {
+        SkillBase.onSkillUnlock -= SkillUnlocked;
     }
 
 }

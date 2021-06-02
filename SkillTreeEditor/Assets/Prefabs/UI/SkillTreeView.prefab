@@ -9,8 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2572738420005331945}
-  - component: {fileID: 2572738420005331944}
-  - component: {fileID: 2572738420005331947}
+  - component: {fileID: 5813085019917787181}
   m_Layer: 5
   m_Name: SkillTreeView
   m_TagString: Untagged
@@ -38,7 +37,7 @@ RectTransform:
   m_AnchoredPosition: {x: -0.00012207031, y: 0.0036010742}
   m_SizeDelta: {x: 1999.9998, y: 1124.4517}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2572738420005331944
+--- !u!114 &5813085019917787181
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,25 +46,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 2572738420005331950}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9518f4b816a73d428b30c6e513b4807, type: 3}
+  m_Script: {fileID: 11500000, guid: ecf8cabadb7e0584ba0f485ec351d3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toggleKey: 112
-  uiContainer: {fileID: 0}
---- !u!114 &2572738420005331947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2572738420005331950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9518f4b816a73d428b30c6e513b4807, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  toggleKey: 112
-  uiContainer: {fileID: 8605612279637695285}
+  tree: {fileID: 0}
+  skillView: {fileID: 5426520087327595647, guid: bf9a3662374c9a44d8789069b52893e5, type: 3}
+  line: {fileID: 5525615093872255563, guid: ed20d511c9dbe3a4cb345f9a93c1bb62, type: 3}
+  skillPointsView: {fileID: 8605612279637695282}
+  skillViewsPrefab: {fileID: 85567716658209930, guid: ce6e31e0c70594240b915647e4d18b15, type: 3}
+  skillLinesPrefab: {fileID: 5753300176646317614, guid: 2974e4c8c4438bf4ba595833e14e617e, type: 3}
+  skillViewsParent: {fileID: 0}
+  skillLinesParent: {fileID: 0}
+  skillPoints: 100
+  spawnedSkills:
+  - skill: {fileID: 0}
+    view: {fileID: 0}
+  - skill: {fileID: 0}
+    view: {fileID: 0}
 --- !u!1001 &2572738420160400438
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -119,19 +116,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6114046819411580674, guid: adfc41344dbd0ba4abe0e80e850b2200, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 770.1214
+      value: -179.36475
       objectReference: {fileID: 0}
     - target: {fileID: 6114046819411580674, guid: adfc41344dbd0ba4abe0e80e850b2200, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -450.55417
+      value: 27.930176
       objectReference: {fileID: 0}
     - target: {fileID: 6114046819411580674, guid: adfc41344dbd0ba4abe0e80e850b2200, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 358.73
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6114046819411580674, guid: adfc41344dbd0ba4abe0e80e850b2200, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 55.86
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6114046819411580674, guid: adfc41344dbd0ba4abe0e80e850b2200, type: 3}
       propertyPath: m_AnchorMin.x
@@ -163,17 +160,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6114046819411580675, guid: adfc41344dbd0ba4abe0e80e850b2200, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adfc41344dbd0ba4abe0e80e850b2200, type: 3}
---- !u!1 &8605612279637695285 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6114046819411580675, guid: adfc41344dbd0ba4abe0e80e850b2200, type: 3}
-  m_PrefabInstance: {fileID: 2572738420160400438}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8605612279637695284 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6114046819411580674, guid: adfc41344dbd0ba4abe0e80e850b2200, type: 3}
   m_PrefabInstance: {fileID: 2572738420160400438}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8605612279637695282 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6114046819411580676, guid: adfc41344dbd0ba4abe0e80e850b2200, type: 3}
+  m_PrefabInstance: {fileID: 2572738420160400438}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
